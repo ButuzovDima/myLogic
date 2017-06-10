@@ -1,0 +1,148 @@
+body{
+    width: 850px;
+    height: 500px;
+    background-image: url("img/4.jpg");
+    /*border: 4px solid #0075B2;*/
+    background-size: cover;
+    color: white;
+}
+.block_1{
+    height: 40px;
+   /* border-bottom: 2px solid white;*/
+    padding-left: 250px;
+    padding-top: 20px;
+    font-size: 25px;
+    background-color: rgba(24,33,52,0.7);
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 -5px 0 #3adbfd;
+}
+.block_2{
+    width: 400px;
+    height: 300px;
+    /*border: 3px solid #0075B2;*/
+    color: #ffffff;
+    margin: 10px;
+    background-color: rgba(24,33,52,0.7);
+    box-shadow: 0 -5px 0 #3adbfd;
+    border-radius: 0 0 20px 20px;
+}
+.block_3{
+    width: 400px;
+    height: 100px;
+    /*border: 3px solid #0075B2;*/
+    color: white;
+    margin: 10px;
+    background-color: rgba(24,33,52,0.7);
+    box-shadow: 0 -5px 0 #3adbfd;
+    border-radius: 0 0 20px 20px;
+}
+.block_4{
+    width: 400px;
+    height: 410px;
+    margin-left: 430px;
+    margin-top: -430px;
+    border: 5px solid #3adbfd;
+
+}
+.span_A{
+    margin-left: 10px;
+    font-size: 20px;
+    font-family: "Times New Roman", fantasy;
+    }
+
+input[type=A]{
+    margin: 20px 0px;
+    width: 300px;
+    height: 50px;
+    font-size: 18px;
+    margin-bottom: 25px; /*отступы между кнопок*/
+    border-radius: 4px; /*сглаживаем углы у полей ввода*/
+    padding-left: 40px; /*текст сдвигаем на 10 пкс "влево" */
+}
+input[type=A]:hover{
+    box-shadow: 0 0 6px 3px rgba(58,219,253,0.5);
+    transition: all 0.3s;
+}
+
+.span_B{
+    margin-left: 10px;
+    font-size: 20px;
+    font-family: "Times New Roman", fantasy;
+    }
+input[type=B] {
+    width: 300px;
+    height: 50px;
+    font-size: 18px;
+    margin-bottom: 25px; /*отступы между кнопок*/
+    border-radius: 4px; /*сглаживаем углы у полей ввода*/
+    padding-left: 40px; /*текст сдвигаем на 10 пкс "влево" */
+}
+input[type=B]:hover{
+    box-shadow: 0 0 6px 3px rgba(58,219,253,0.50);
+    transition: all 0.3s;
+}
+input[type=button]{
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #2ca8c6;
+    border: none;
+    border-bottom: 4px solid #6ee9fd;
+    cursor: pointer; /*Устанавливает форму курсора, когда он находится в пределах элемента*/
+    border-radius: 0 0 4px 4px;
+}
+input[type=button]:hover{
+    transition: all 0.5s;
+    background: #fff;
+    color: #2c536c;
+}
+#reply{
+    margin: 120px 40px;
+
+}
+#canvas{
+    background-color: white;
+}
+#clear{
+    margin-left: 145px;
+}
+.block_2 .fa-question{
+    color: #ffffff;
+    font-size: 17px;
+    display: inline-block; /* Строчно-блочный элемент */
+    position: relative; /* Относительное позиционирование */
+}
+
+.fa-question:hover::after{
+    content: 'Пример записи: {1,2,3,4}'; /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    left: 20%; top: 30%; /* Положение подсказки */
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    background: #2ca8c6;/*rgba(255,255,230,0.9); /* Полупрозрачный цвет фона */
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    font-size: 17px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 -5px 0 #3adbfd;
+}
+.span_B::before{
+    font-family: "FontAwesome";
+    content: "\f101";
+    position: absolute;
+    font-size: 35px;
+    padding: 7px 0px 0px 15px;
+    color: #2c536c;
+}
+.span_A::before{
+    font-family: "FontAwesome";
+    content: "\f101";
+    position: absolute;
+    font-size: 35px;
+    padding: 30px 0px 0px 15px;
+    color: #2c536c;
+}
+.fa-terminal{
+    margin: 0 0 0 20px;
+}

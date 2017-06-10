@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <link href="css/font-awesome.css" rel="stylesheet"/>
+    <link href="logic.css" rel="stylesheet"/> <!--устанавливает связь в внешними документами вроде файла со стилями -->
+</head>
+<body>
+    <div class="block_1">Операции логики Буля</div>
+    <div class="block_2">
+        <p></p>
+        <div class="span_A">
+            <input name="bool_A" type="A"  id="id_a" placeholder="Введите значение множества А">
+            <span class="fa fa-question" aria-hidden="true"> <div class="help"> </div> </p>  </p> </span>
+        </div>
+        <div class="span_B">
+            <input name="bool_B" type="B" id="id_b" placeholder="Введите значение множества В" > </p>
+        </div>
+
+        <input type="button" id="intersection" value="A &#8743 B" >
+        <input type="button" id="union" value="A &#8744 B" >
+        <input type="button" id="subtraction" value="A \ B" >
+        <p></p>
+        <input type="button" id="clear" value="Очистить" onclick="_clear()" >
+    </div>
+    <div class="block_3">
+        <p></p>
+        <i class="fa fa-terminal" aria-hidden="true"></i>
+        <span id="reply"> Введите значения множества  A и B</span>
+    </div>
+    <div class="block_4">
+        <canvas id="canvas" width="400" height="410" >
+
+        </canvas>
+    </div>
+
+    <script src="logic.js" ></script>
+</body>
+</html>
