@@ -172,6 +172,8 @@ let un = function(a,b){
 //событие на кнопку Очистить (вариант 1)
 let _clear = function(){
     circle.clearRect(0, 0, canvas.width, canvas.height);
+    circle_line.clearRect(0, 0, canvas.width, canvas.height);
+    circle_and.clearRect(0, 0, canvas.width, canvas.height);
     document.getElementById('id_a').value = '';
     document.getElementById('id_b').value = '';
     rep.innerHTML = 'Введите значения множества  A и B';
@@ -513,4 +515,4 @@ subtraction.onclick = function(){
         rep.innerHTML = 'Error';
     }
 };
-//oo
+
