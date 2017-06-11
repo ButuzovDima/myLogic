@@ -19,12 +19,14 @@ let Ctx = function(text, x, y){
 };
 
 //создаем класс Circle
-let Circle = function(x, y, color){
+let Circle = function(x, y, color, gco){
     this.x = x;
     this.y = y;
     this.color = color;
+    this.gco = gco;
     //метод для отрисовки фигур.
     this.draw = function(){
+        circle.globalCompositeOperation = this.gco;
         circle.beginPath(); //beginPath используется что бы «начать» серию действий описывающих отрисовку фигуры
         //Каждый новый вызов beginPath сбрасывает все действия предыдущего и начинает «рисовать» занова.
         circle.arc(this.x, this.y, 100, 0, Math.PI*2, true);
@@ -34,12 +36,13 @@ let Circle = function(x, y, color){
 };
 
 //создаем класс окружностей
-let Circle_line = function(x, y, color){
+let Circle_line = function(x, y, color, gco){
     this.x = x;
     this.y = y;
     this.color = color;
+    this.gco = gco;
     this.draw = function(){
-        circle_line.globalCompositeOperation = 'copy';
+        circle_line.globalCompositeOperation = this.gco;
         circle_line.beginPath();
         circle_line.arc(this.x, this.y, 100, 0, Math.PI*2, true);
         circle_line.strokeStyle = this.color;
@@ -64,20 +67,7 @@ let Circle_and = function(x1,y1,x2,y2,color){
         circle_and.arc(this.x2,this.y2,100,0,Math.PI*2, true);
         circle_and.fillStyle = this.color;
         circle_and.fill();
-
-        circle_line.globalCompositeOperation = 'source-over';
-        circle_line.beginPath();
-        circle_line.arc(this.x1, this.y1, 100, 0, Math.PI*2, true);
-        circle_line.strokeStyle = this.color;
-        circle_line.stroke();
-
-        circle_line.globalCompositeOperation = 'destination-over';
-        circle_line.beginPath();
-        circle_line.arc(this.x2, this.y2, 100, 0, Math.PI*2, true);
-        circle_line.strokeStyle = this.color;
-        circle_line.stroke();
     }
-
 };
 
 //функция пересечения
@@ -254,6 +244,9 @@ intersection.onclick = function(){
     if(!err)
     {
         circle.clearRect(0, 0, canvas.width, canvas.height); //очищает canvas
+        circle_line.clearRect(0, 0, canvas.width, canvas.height);
+        circle_and.clearRect(0, 0, canvas.width, canvas.height);
+
         _inter = inter(arr_a, arr_b);
         for(let i = 0; i < _inter.length; i++){
             if(_inter[i] !== undefined){
@@ -263,25 +256,16 @@ intersection.onclick = function(){
         }
 
         if(t){
-
-
-/*
-            circleA = new Circle_line(150, 150, '#0075B2');
-            circleA.draw();
-
-
-            circleB = new Circle_line(250,250, '#0075B2');
-            circleB.draw();
-            ctxB = new Ctx('B',250,250);
-            ctxB.wr();
-*/
             circleAnd = new Circle_and(150,150,250,250, '#0075B2');
             circleAnd.draw();
-
-
-            //circle_l.globalCompositeOperation = 'source-in';
-
-
+            circleA = new Circle_line(150, 150, '#0075B2', 'source-over');
+            circleA.draw();
+            ctxA = new Ctx('A',150, 150);
+            ctxA.wr();
+            circleB = new Circle_line(250, 250, '#0075B2', 'destination-over');
+            circleB.draw();
+            ctxB = new Ctx('B',250, 250);
+            ctxB.wr();
         }
 
         rep.innerHTML = 'A &#8743 B = ' + inter(arr_a,arr_b);
@@ -354,6 +338,8 @@ union.onclick = function() {
     if(!err)
     {
         circle.clearRect(0, 0, canvas.width, canvas.height); //очищает canvas
+        circle_line.clearRect(0, 0, canvas.width, canvas.height);
+        circle_and.clearRect(0, 0, canvas.width, canvas.height);
         _inter = inter(arr_a,arr_b);
         for(let k = 0; k < _inter.length; k++){
             if(_inter[k] !== undefined){
@@ -362,22 +348,22 @@ union.onclick = function() {
             }
         }
         if(t){
-            circleA = new Circle(150,150,'#0075B2');
+            circleA = new Circle(150,150,'#0075B2', 'source-over');
             circleA.draw();
             ctxA = new Ctx('A',150,150);
             ctxA.wr();
-            circleB = new Circle(250,250,'#0075B2');
+            circleB = new Circle(250,250,'#0075B2', 'source-over');
             circleB.draw();
             ctxB = new Ctx('B',250,250);
             ctxB.wr();
         }
         else{
             if(arr_a.length !== 0 && arr_b.length !== 0){
-                circleA = new Circle(150,150,'#0075B2');
+                circleA = new Circle(150,150,'#0075B2', 'source-over');
                 circleA.draw();
                 ctxA = new Ctx('A',150,150);
                 ctxA.wr();
-                circleB = new Circle(290.5,290.5,'#0075B2');
+                circleB = new Circle(290.5,290.5,'#0075B2', 'source-over');
                 circleB.draw();
                 ctxB = new Ctx('B',290.5,290.5);
                 ctxB.wr();
@@ -464,6 +450,8 @@ subtraction.onclick = function(){
     if(!err)
     {
         circle.clearRect(0, 0, canvas.width, canvas.height); //очищает canvas
+        circle_line.clearRect(0, 0, canvas.width, canvas.height);
+        circle_and.clearRect(0, 0, canvas.width, canvas.height);
         _inter = inter(arr_a,arr_b);
         if(arr_a.length === _inter.length)
         {
