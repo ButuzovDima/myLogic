@@ -256,16 +256,25 @@ intersection.onclick = function(){
         }
 
         if(t){
-            circleAnd = new Circle_and(150,150,250,250, '#0075B2');
-            circleAnd.draw();
-            circleA = new Circle_line(150, 150, '#0075B2', 'source-over');
-            circleA.draw();
-            ctxA = new Ctx('A',150, 150);
-            ctxA.wr();
-            circleB = new Circle_line(250, 250, '#0075B2', 'destination-over');
-            circleB.draw();
-            ctxB = new Ctx('B',250, 250);
-            ctxB.wr();
+            if(arr_a.length === arr_b.length){
+                circleA = new Circle(200, 200, '#0075B2', 'source-over');
+                circleA.draw();
+                ctxA = new Ctx('A , B',180, 200);
+                ctxA.wr();
+
+            }
+            else{
+                circleAnd = new Circle_and(150,150,250,250, '#0075B2');
+                circleAnd.draw();
+                circleA = new Circle_line(150, 150, '#0075B2', 'source-over');
+                circleA.draw();
+                ctxA = new Ctx('A',150, 150);
+                ctxA.wr();
+                circleB = new Circle_line(250, 250, '#0075B2', 'destination-over');
+                circleB.draw();
+                ctxB = new Ctx('B',250, 250);
+                ctxB.wr();
+            }
         }
 
         rep.innerHTML = 'A &#8743 B = ' + inter(arr_a,arr_b);
@@ -369,13 +378,13 @@ union.onclick = function() {
                 ctxB.wr();
             }
             if(arr_a.length !== 0 && arr_b.length === 0){
-                circleA = new Circle(150,150,'#0075B2');
+                circleA = new Circle(150,150,'#0075B2', 'source-over');
                 circleA.draw();
                 ctxA = new Ctx('A',150,150);
                 ctxA.wr();
             }
             if(arr_a.length === 0 && arr_b.length !== 0){
-                circleB = new Circle(290.5,290.5,'#0075B2');
+                circleB = new Circle(290.5,290.5,'#0075B2', 'source-over');
                 circleB.draw();
                 ctxB = new Ctx('B',290.5,290.5);
                 ctxB.wr();
@@ -482,18 +491,18 @@ subtraction.onclick = function(){
         {
             if(_inter.length === 0)
             {
-                circleA = new Circle(150,150,'#0075B2');
+                circleA = new Circle(150,150,'#0075B2', 'source-over');
                 circleA.draw();
                 ctxA = new Ctx('A', 150, 150);
                 ctxA.wr();
             }
             else
             {
-                circleA = new Circle(150,150,'#0075B2');
+                circleA = new Circle(150,150,'#0075B2', 'source-over');
                 circleA.draw();
                 circleA = new Ctx('A', 150, 150);
                 circleA.wr();
-                circleB = new Circle(250,250,'white');
+                circleB = new Circle(250,250,'white', 'source-over');
                 circleB.draw();
             }
             rep.innerHTML = 'A \\ B = ' + subtr(arr_a,arr_b);
