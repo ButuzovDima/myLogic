@@ -259,11 +259,31 @@ intersection.onclick = function(){
 
         if(t){
             if(arr_a.length === arr_b.length){
-                circleA = new Circle(200, 200, '#0075B2', 'source-over');
-                circleA.draw();
-                ctxA = new Ctx('A , B',180, 200);
-                ctxA.wr();
-
+                let tr = false;
+                for(let i = 0; i < arr_a.length; i++){
+                    if(arr_a[i] !== arr_b[i]){
+                        tr = true;
+                        break;
+                    }
+                }
+                if(tr){
+                    circleAnd = new Circle_and(150,150,250,250, '#0075B2');
+                    circleAnd.draw();
+                    circleA = new Circle_line(150, 150, '#0075B2', 'source-over');
+                    circleA.draw();
+                    ctxA = new Ctx('A',150, 150);
+                    ctxA.wr();
+                    circleB = new Circle_line(250, 250, '#0075B2', 'destination-over');
+                    circleB.draw();
+                    ctxB = new Ctx('B',250, 250);
+                    ctxB.wr();
+                }
+                else{
+                    circleA = new Circle(200, 200, '#0075B2', 'source-over');
+                    circleA.draw();
+                    ctxA = new Ctx('A , B',180, 200);
+                    ctxA.wr();
+                }
             }
             else{
                 circleAnd = new Circle_and(150,150,250,250, '#0075B2');
